@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G80" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="City" representedClassName="City" syncable="YES">
+        <attribute name="descript" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="sights" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Landmark" inverseName="city" inverseEntity="Landmark"/>
+    </entity>
+    <entity name="Landmark" representedClassName="Landmark" syncable="YES">
+        <attribute name="descript" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="town" optional="YES" attributeType="String"/>
+        <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="sights" inverseEntity="City"/>
+    </entity>
+    <elements>
+        <element name="City" positionX="-54" positionY="-9" width="128" height="74"/>
+        <element name="Landmark" positionX="-36" positionY="27" width="128" height="89"/>
+    </elements>
+</model>
