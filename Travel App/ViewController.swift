@@ -21,6 +21,8 @@ class ViewController: UIViewController {
     
     var items = [City]()
     var selectedCity: City?
+    var cityHasLandmarks = [Landmark]()
+    var cityToRemove: City?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +61,7 @@ class ViewController: UIViewController {
         do {
             self.items = try context.fetch(City.fetchRequest())
             
+            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -69,7 +72,22 @@ class ViewController: UIViewController {
             
         }
     }
-    
+    func fetchLandmarks(){
+        
+        do {
+            let request = Landmark.fetchRequest() as NSFetchRequest<Landmark>
+            
+            let pred = NSPredicate(format: "town CONTAINS %@", cityToRemove?.name as! CVarArg)
+            request.predicate = pred
+            
+            self.cityHasLandmarks = try context.fetch(request)
+            //print(cityHasLandmarks.count)
+           
+        }
+        catch {
+            
+        }
+    }
     
     @IBAction func addTapped (_ sender: UIBarButtonItem) {
         
@@ -79,8 +97,10 @@ class ViewController: UIViewController {
         let alert = UIAlertController(title: "Add city", message: "What is the city's name?", preferredStyle: .alert)
         alert.addTextField()
         
+    
         // configure button handler
         let submitButton = UIAlertAction(title: "Add", style: .default) { action in
+            
             
             let textfield = alert.textFields![0]
             
@@ -96,11 +116,18 @@ class ViewController: UIViewController {
             }
             // refetch data
             self.fetchCities()
+            
+            
                     }
+        
+        
+        
         // add button
         alert.addAction(submitButton)
+        
         // show alert
         self.present(alert, animated: true, completion: nil)
+        
     }
 }
 
@@ -126,22 +153,33 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
     }
     
+    // Delete city
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         // create swap action
         let action = UIContextualAction(style: .destructive, title: "Delete") {(action,view,completionHandler)
             in
             // which city to remove
-            let cityToRemove = self.items[indexPath.row]
+            self.cityToRemove = self.items[indexPath.row]
+           
             
-            // remove the city
-            self.context.delete(cityToRemove)
-            // save the data
-            do {
-                try self.context.save()
+            self.fetchLandmarks()
+            if self.cityHasLandmarks.count > 0 {
+                print("ne mojehs da triesh")
             }
-            catch {
-                
+            else {
+                // remove the city
+                self.context.delete(self.cityToRemove!)
+                // save the data
+                do {
+                    try self.context.save()
+                }
+                catch {
+                    
+                }
             }
+            
+            
             // refetch
             
             self.fetchCities()
@@ -155,26 +193,10 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         let city = self.items[indexPath.row]
         
-        print("You selected cell #\(indexPath.row)!")
         self.selectedCity = city
         
         performSegue(withIdentifier: Constants.landamarkSegueIdentifier, sender: self)
-        // let cell = tableView.cellForRow(at: indexPath)
-        
-        //print(items[0])
-        
-        
-        //     func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        //        if segue.destination is LandmarkViewController {
-        //            let vc = segue.destination as? LandmarkViewController
-        //            vc?.title = cell?.textLabel?.text
-        //        }
-        //    }
-        
-        // let storyboard = UIStoryboard(name: "Landmark", bundle: nil)
-        //let vc = storyboard.instantiateInitialViewController()!
-        // vc.title = cell?.textLabel?.text
-        //present(vc, animated: true, completion: nil)
+       
     }
     
     

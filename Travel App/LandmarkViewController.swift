@@ -10,14 +10,24 @@ import CoreData
 
 class LandmarkViewController: UIViewController {
     
+    struct Constants {
+        static let descriptionSegueIdentifier = "descriptionSegueIdentifier"
+        static let landmarkcellIdentifier = "landmarkcell"
+    }
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+   
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var textView: UITextView!
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var city: City?
     var items = [Landmark]()
+
+    var selectedLandmark: Landmark?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +38,8 @@ class LandmarkViewController: UIViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         tableView.reloadData()
-        
+        textView.backgroundColor = .green
+        textView.text = city?.descript ?? "no text to show"
         
                fetchLandmarks()
         
@@ -43,7 +54,10 @@ class LandmarkViewController: UIViewController {
             let pred = NSPredicate(format: "town CONTAINS %@", city?.name as! CVarArg)
             request.predicate = pred
             request.returnsObjectsAsFaults = false
+            
             self.items = try context.fetch(request)
+            
+            textView.text = city?.descript ?? "no text to show"
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -55,6 +69,31 @@ class LandmarkViewController: UIViewController {
             
         }
     }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case Constants.descriptionSegueIdentifier:
+            let descriptionViewController = (segue.destination as! DescriptionViewController)
+            
+            let fetchForChildren = {
+                self.fetchLandmarks()
+            }
+            
+            descriptionViewController.landmark = self.selectedLandmark
+            descriptionViewController.fetch = fetchForChildren
+            
+            
+        default:
+            break
+        }
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    
+    
+    
     
     @IBAction func addLandmark(_ sender: UIBarButtonItem) {
         
@@ -75,7 +114,9 @@ class LandmarkViewController: UIViewController {
             newLandmark.city = self.city
             
             let city = City(context: self.context)
+            
             city.addToSights(newLandmark)
+            //print(city.sights)
             
            
             
@@ -94,6 +135,41 @@ class LandmarkViewController: UIViewController {
         alert.addAction(submitButton)
         // show alert
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func addDescription(_ sender: Any) {
+        
+        
+        let alert = UIAlertController(title: "Add description", message: "Say somehting cool about the city ", preferredStyle: .alert)
+        alert.addTextField()
+        
+        // configure button handler
+        let submitButton = UIAlertAction(title: "Add", style: .default) { action in
+            
+            let textfield = alert.textFields![0]
+            
+            
+            
+            self.city?.descript = textfield.text
+            
+            // save data
+            do {
+                try self.context.save()
+            }
+            catch {
+                print("coudnt fetch")
+            }
+            // refetch data
+            self.fetchLandmarks()
+            
+            
+        }
+        // add button
+        alert.addAction(submitButton)
+        // show alert
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     
@@ -128,6 +204,8 @@ class LandmarkViewController: UIViewController {
 
 extension LandmarkViewController: UITableViewDelegate {
     
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
@@ -138,7 +216,18 @@ extension LandmarkViewController: UITableViewDelegate {
         
         cell.textLabel?.text = landmark.name ?? "/"
         
+       
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let landmark = self.items[indexPath.row]
+        
+        self.selectedLandmark = landmark
+        
+        performSegue(withIdentifier: Constants.descriptionSegueIdentifier, sender: self)
+        
     }
 }
 

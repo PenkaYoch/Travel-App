@@ -20,6 +20,7 @@
 		3C53377826CE473B003AB6F8 /* City+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C53377426CE473B003AB6F8 /* City+CoreDataProperties.swift */; };
 		3C53377926CE473B003AB6F8 /* Landmark+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C53377526CE473B003AB6F8 /* Landmark+CoreDataClass.swift */; };
 		3C53377A26CE473B003AB6F8 /* Landmark+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C53377626CE473B003AB6F8 /* Landmark+CoreDataProperties.swift */; };
+		3CF1ED2D26CF95DE004CC529 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF1ED2C26CF95DE004CC529 /* DescriptionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		3C53377426CE473B003AB6F8 /* City+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "City+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3C53377526CE473B003AB6F8 /* Landmark+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Landmark+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3C53377626CE473B003AB6F8 /* Landmark+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Landmark+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3CF1ED2C26CF95DE004CC529 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				3C53373826C55CE5003AB6F8 /* Travel_App.xcdatamodeld */,
 				3C53376526CBC760003AB6F8 /* Landmark.storyboard */,
 				3C53376326CAB9CB003AB6F8 /* LandmarkViewController.swift */,
+				3CF1ED2C26CF95DE004CC529 /* DescriptionViewController.swift */,
 			);
 			path = "Travel App";
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				3C53377726CE473B003AB6F8 /* City+CoreDataClass.swift in Sources */,
 				3C53373426C55CE5003AB6F8 /* ViewController.swift in Sources */,
 				3C53377826CE473B003AB6F8 /* City+CoreDataProperties.swift in Sources */,
+				3CF1ED2D26CF95DE004CC529 /* DescriptionViewController.swift in Sources */,
 				3C53373A26C55CE5003AB6F8 /* Travel_App.xcdatamodeld in Sources */,
 				3C53377A26CE473B003AB6F8 /* Landmark+CoreDataProperties.swift in Sources */,
 				3C53373026C55CE5003AB6F8 /* AppDelegate.swift in Sources */,
