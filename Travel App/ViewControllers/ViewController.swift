@@ -72,12 +72,16 @@ class ViewController: UIViewController {
             
         }
     }
-    func fetchLandmarks(){
+    func fetchLandmarks() {
         
         do {
             let request = Landmark.fetchRequest() as NSFetchRequest<Landmark>
             
-            let pred = NSPredicate(format: "town CONTAINS %@", cityToRemove?.name as! CVarArg)
+            guard let name = cityToRemove?.name else {
+                return
+            }
+            
+            let pred = NSPredicate(format: "town CONTAINS %@", name)
             request.predicate = pred
             
             self.cityHasLandmarks = try context.fetch(request)
@@ -89,9 +93,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func addTapped (_ sender: UIBarButtonItem) {
-        
-        
+    @IBAction func didTapAddButton(_ sender: Any) {
         // create allert
         
         let alert = UIAlertController(title: "Add city", message: "What is the city's name?", preferredStyle: .alert)
@@ -127,8 +129,8 @@ class ViewController: UIViewController {
         
         // show alert
         self.present(alert, animated: true, completion: nil)
-        
     }
+ 
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {

@@ -34,6 +34,8 @@ class LandmarkViewController: UIViewController {
         
         title = city?.name ?? "/"
         
+        print(self.city?.sights?.allObjects)
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
@@ -41,7 +43,7 @@ class LandmarkViewController: UIViewController {
         textView.backgroundColor = .green
         textView.text = city?.descript ?? "no text to show"
         
-               fetchLandmarks()
+        fetchLandmarks()
         
     }
     
@@ -51,7 +53,11 @@ class LandmarkViewController: UIViewController {
         do {
             let request = Landmark.fetchRequest() as NSFetchRequest<Landmark>
             
-            let pred = NSPredicate(format: "town CONTAINS %@", city?.name as! CVarArg)
+            guard let cityName = city?.name else {
+                return
+            }
+            
+            let pred = NSPredicate(format: "town CONTAINS %@", cityName)
             request.predicate = pred
             request.returnsObjectsAsFaults = false
             

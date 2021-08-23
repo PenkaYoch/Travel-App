@@ -13,7 +13,6 @@
 		3C53373A26C55CE5003AB6F8 /* Travel_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3C53373826C55CE5003AB6F8 /* Travel_App.xcdatamodeld */; };
 		3C53373C26C55CE8003AB6F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C53373B26C55CE8003AB6F8 /* Assets.xcassets */; };
 		3C53373F26C55CE8003AB6F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C53373D26C55CE8003AB6F8 /* LaunchScreen.storyboard */; };
-		3C53375226CA421F003AB6F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C53375126CA421F003AB6F8 /* Main.storyboard */; };
 		3C53376426CAB9CB003AB6F8 /* LandmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C53376326CAB9CB003AB6F8 /* LandmarkViewController.swift */; };
 		3C53376626CBC760003AB6F8 /* Landmark.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C53376526CBC760003AB6F8 /* Landmark.storyboard */; };
 		3C53377726CE473B003AB6F8 /* City+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C53377326CE473B003AB6F8 /* City+CoreDataClass.swift */; };
@@ -21,6 +20,7 @@
 		3C53377926CE473B003AB6F8 /* Landmark+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C53377526CE473B003AB6F8 /* Landmark+CoreDataClass.swift */; };
 		3C53377A26CE473B003AB6F8 /* Landmark+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C53377626CE473B003AB6F8 /* Landmark+CoreDataProperties.swift */; };
 		3CF1ED2D26CF95DE004CC529 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF1ED2C26CF95DE004CC529 /* DescriptionViewController.swift */; };
+		BED9C42626D2CF920025FA65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BED9C42526D2CF920025FA65 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +32,6 @@
 		3C53373B26C55CE8003AB6F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C53373E26C55CE8003AB6F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C53374026C55CE8003AB6F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3C53375126CA421F003AB6F8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../../.Trash/Main.storyboard; sourceTree = "<group>"; };
 		3C53376326CAB9CB003AB6F8 /* LandmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkViewController.swift; sourceTree = "<group>"; };
 		3C53376526CBC760003AB6F8 /* Landmark.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Landmark.storyboard; sourceTree = "<group>"; };
 		3C53377326CE473B003AB6F8 /* City+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "City+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -40,6 +39,7 @@
 		3C53377526CE473B003AB6F8 /* Landmark+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Landmark+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3C53377626CE473B003AB6F8 /* Landmark+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Landmark+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3CF1ED2C26CF95DE004CC529 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
+		BED9C42526D2CF920025FA65 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,15 +74,14 @@
 			children = (
 				3C53377226CD2A87003AB6F8 /* Launch */,
 				3C53376F26CBD3BD003AB6F8 /* Model */,
+				BED9C42726D2D5980025FA65 /* ViewControllers */,
 				3C53372F26C55CE5003AB6F8 /* AppDelegate.swift */,
 				3C53373126C55CE5003AB6F8 /* SceneDelegate.swift */,
-				3C53373326C55CE5003AB6F8 /* ViewController.swift */,
-				3C53375126CA421F003AB6F8 /* Main.storyboard */,
 				3C53373B26C55CE8003AB6F8 /* Assets.xcassets */,
 				3C53374026C55CE8003AB6F8 /* Info.plist */,
 				3C53373826C55CE5003AB6F8 /* Travel_App.xcdatamodeld */,
+				BED9C42526D2CF920025FA65 /* Main.storyboard */,
 				3C53376526CBC760003AB6F8 /* Landmark.storyboard */,
-				3C53376326CAB9CB003AB6F8 /* LandmarkViewController.swift */,
 				3CF1ED2C26CF95DE004CC529 /* DescriptionViewController.swift */,
 			);
 			path = "Travel App";
@@ -105,6 +104,15 @@
 				3C53373D26C55CE8003AB6F8 /* LaunchScreen.storyboard */,
 			);
 			path = Launch;
+			sourceTree = "<group>";
+		};
+		BED9C42726D2D5980025FA65 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3C53373326C55CE5003AB6F8 /* ViewController.swift */,
+				3C53376326CAB9CB003AB6F8 /* LandmarkViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,9 +173,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C53376626CBC760003AB6F8 /* Landmark.storyboard in Resources */,
-				3C53375226CA421F003AB6F8 /* Main.storyboard in Resources */,
 				3C53373F26C55CE8003AB6F8 /* LaunchScreen.storyboard in Resources */,
 				3C53373C26C55CE8003AB6F8 /* Assets.xcassets in Resources */,
+				BED9C42626D2CF920025FA65 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,7 +335,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5C2QNAY2L3;
+				DEVELOPMENT_TEAM = A5HPD2NRV8;
 				INFOPLIST_FILE = "Travel App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -346,7 +354,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5C2QNAY2L3;
+				DEVELOPMENT_TEAM = A5HPD2NRV8;
 				INFOPLIST_FILE = "Travel App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
